@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title%}
+
+{% endblock %}
+
+
+{% block body%}
+<div class="container mt-5">
+    <h1>Courses created by {{ current_user.username }}</h1>
+    <p></p>
+    <a class="btn btn-success" href="/create-course">Create course</a>
+    <p></p>
+    {% for el in courses %}
+    <div class="alert alert-info">
+        <h2>{{ el.title }}</h2>
+        <p>{{ el.intro }}</p>
+        <a href="/courses/{{ el.id }}" class="btn btn-warning">Details</a>
+    </div>
+    {% endfor %}
+
+</div>
+
+{% endblock %}

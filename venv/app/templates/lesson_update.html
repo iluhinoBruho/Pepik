@@ -1,0 +1,18 @@
+{% extends 'base.html' %}        #РЅР°СЃР»РµРґРѕРІР°РЅРёРµ РёР· base.html
+
+{% block title%}
+Editting lesson
+{% endblock %}
+
+
+{% block body%}
+<div class="container mt-5">
+  <h1>Editting lesson</h1>
+  <form method="post">
+    <input type="text" name="title" id="title" class="form-control" value="{{ lesson.title }}"><br>
+    <textarea name="text" id="text" class="form-control">{{ lesson.text }}</textarea><br>
+    <input type="submit" class="btn btn-success" value="Commit"><br>
+  </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Hi, {{ current_user.username }}!</h1>
+    <div><p>Here are updates:</p></div>
+    {% for lesson in new_lessons %}
+    <div><p>Course {{ lesson.title }} added: <b>{{ lesson }}</b></p></div>
+    {% endfor %}
+{% endblock %}

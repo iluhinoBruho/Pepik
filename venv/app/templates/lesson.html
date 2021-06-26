@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title%}
+
+{% endblock %}
+
+
+{% block body%}
+<div class="container mt-5">
+    <a href="/courses/{{ lesson.course_id }}" class="btn btn-success">Course</a>
+    <p></p>
+    <p></p>
+    <p></p>
+    <h1>{{ lesson.title }}</h1>
+    <p></p>
+    {% if user == author %}
+    <a href="/courses/{{ lesson.course_id }}/les/{{ lesson.id }}/delete" class="btn btn-danger">Delete</a>
+    <a href="/courses/{{ lesson.course_id }}/les/{{ lesson.id }}/update" class="btn btn-warning">Edit</a>
+    <p></p>
+    {% endif %}
+    <div class="alert alert-info">
+        <pre style="fond-size:50px">
+            <b>{{ lesson.format() }}</b>
+        </pre>
+    </div>
+
+</div>
+
+{% endblock %}

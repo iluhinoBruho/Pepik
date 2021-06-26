@@ -1,0 +1,18 @@
+{% extends 'base.html' %}        #наследование из base.html
+
+{% block title%}
+
+{% endblock %}
+
+
+{% block body%}
+<div class="container mt-5">
+  <h1>Adding lesson</h1>
+  <form method="post">
+    <input type="text" name="title" id="title" class="form-control"><br>
+    <textarea name="intro" id="intro" class="form-control"></textarea><br>
+    <input type="submit" class="btn btn-success" value="Add"><br>
+  </form>
+</div>
+
+{% endblock %}
