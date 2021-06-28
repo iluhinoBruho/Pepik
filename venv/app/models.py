@@ -5,26 +5,12 @@ from flask_login import UserMixin
 from app import login
 from hashlib import md5
 
-'''
-students = db.Table('students',
-    db.Column('student_id', db.Integer, db.ForeignKey('user.id')),
-    db.Column('course_id', db.Integer, db.ForeignKey('course.id'))
-)'''
-
-
 
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(64), index=True, unique=True)
     email = db.Column(db.String(120), index=True, unique=True)
     password_hash = db.Column(db.String(128))
-
-    '''
-    studying = db.relationship(
-        'User', secondary=students,
-        primaryjoin=(students.c.user_id == id),
-        secondaryjoin=(followers.c.course_id == id),
-        backref=db.backref('students', lazy='dynamic'), lazy='dynamic')'''
 
     def __repr__(self):
         return '<User {}>'.format(self.username)
@@ -67,7 +53,7 @@ class Lesson(db.Model):
             cnt += 1
             if self.text[i] == '\n':
                 cnt = 0
-            if cnt == 135:
+            if cnt == 135:    #num of chars in string that allows to browse through lessons' texts with comfort on gadegts with diagonale~15 inches 
                 cnt = 0
                 res += '\n'
         return res
@@ -86,18 +72,3 @@ class Sub(db.Model):
 @login.user_loader
 def load_user(id):
     return User.query.get(int(id))
-
-'''
-def init_db():
-    db.create_all()#(extend_existing=True)
-
-    # Create a test Article
-
-    a = Article(title="example", intro="look", text="here it is")
-    db.session.add(a)
-    db.session.commit()
-
-
-if __name__ == '__main__':
-    init_db()
-'''
