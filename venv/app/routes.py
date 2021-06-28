@@ -108,6 +108,7 @@ def create_course():
         try:
             db.session.add(course)
             db.session.commit()
+            flash("Successfully created course")
             return redirect('/courses')
         except:
             return "An error occured while creating the course"
